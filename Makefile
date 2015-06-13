@@ -40,35 +40,36 @@
 #  Makefile to build X-Diff
 #
 #  make:             builds all
-#  make install:     builds all
+#  make package:     builds all
 #                    create a 'xdiff.jar' file, and clean class files
 #             
 #  make clean:       removes class files
 #
 ##############################################################################
 
-#export JAVA_HOME   = 
-#export JAVAC	= $(JAVA_HOME)javac
-#export JAVA	= $(JAVA_HOME)java
-#export JAR	= $(JAVA_HOME)jar
+#JAVAC_ARGS=-Xlint:unchecked
 
-export JAVAC	= javac
-export JAVA	= java
-export JAR	= jar
+JAVAC = $(JDK_HOME)/bin/javac $(JAVAC_ARGS)
+JAVA = $(JDK_HOME)/bin/java
+JAR = $(JDK_HOME)/bin/jar
 
-export SOURCES	= XHash.java XTree.java XParser.java XLut.java XDiff.java
-export CLASSES	= $(SOURCES:.java=.class)
-export JARFILE	= xdiff.jar
+SOURCES = XHash.java XTree.java XParser.java XLut.java XDiff.java
+CLASSES = $(SOURCES:.java=.class)
+DEST_CLASSES = $(patsubst %,$(DEST_DIR)/%,$(subst :, ,$(SOURCES:.java=.class)))
+JARFILE = xdiff.jar
 
-xdiff:	$(CLASSES)
+DEST_DIR = build
 
-%.class: %.java
-	$(JAVAC) $<
+xdiff:	$(DEST_CLASSES)
 
-install: 
-	$(JAR) cf $(JARFILE) $(CLASSES) ; \
-	rm -f $(CLASSES)
+$(DEST_DIR)/%.class: %.java
+	mkdir -p $(DEST_DIR)
+	$(JAVAC) -d $(DEST_DIR) $<
+
+package: 
+	$(JAR) cf $(DEST_DIR)/$(JARFILE) -C $(DEST_DIR) . ; \
+	rm -f $(DEST_CLASSES)
 
 clean:
-	rm -f $(CLASSES) $(JARFILE)
+	rm -rf $(DEST_DIR)
 
