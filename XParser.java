@@ -51,10 +51,10 @@ class XParser extends DefaultHandler implements LexicalHandler
 {
 	private static final String	_PARSER_NAME = "org.apache.xerces.parsers.SAXParser";
 	private static boolean	_setValidation = false;
-	private static boolean	_setNameSpaces = true;
-	private static boolean	_setSchemaSupport = true;
+	private static boolean	_setNameSpaces = false;
+	private static boolean	_setSchemaSupport = false;
 	private static boolean	_setSchemaFullSupport = false;
- 	private static boolean  _setNameSpacePrefixes = true;
+ 	private static boolean  _setNameSpacePrefixes = false;
 
 	private static int	_STACK_SIZE = 100;
 
@@ -75,11 +75,11 @@ class XParser extends DefaultHandler implements LexicalHandler
 		try
 		{
 			_parser = (XMLReader)Class.forName(_PARSER_NAME).newInstance();
-			_parser.setFeature("http://xml.org/sax/features/validation", _setValidation);
-			_parser.setFeature("http://xml.org/sax/features/namespaces", _setNameSpaces);
-			_parser.setFeature("http://apache.org/xml/features/validation/schema", _setSchemaSupport);
-			_parser.setFeature("http://apache.org/xml/features/validation/schema-full-checking", _setSchemaFullSupport);
- 			_parser.setFeature("http://xml.org/sax/features/namespace-prefixes", _setNameSpacePrefixes);
+			//_parser.setFeature("http://xml.org/sax/features/validation", _setValidation);
+			//_parser.setFeature("http://xml.org/sax/features/namespaces", _setNameSpaces);
+			//_parser.setFeature("http://apache.org/xml/features/validation/schema", _setSchemaSupport);
+			//_parser.setFeature("http://apache.org/xml/features/validation/schema-full-checking", _setSchemaFullSupport);
+          //_parser.setFeature("http://xml.org/sax/features/namespace-prefixes", _setNameSpacePrefixes);
 
 			_parser.setContentHandler(this);
 			_parser.setErrorHandler(this);

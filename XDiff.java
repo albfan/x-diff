@@ -83,10 +83,12 @@ class XDiff
 	public XDiff(String input1, String input2, String output)
 	{
 		// Parse input files
-		XParser	parser = new XParser();
+		System.out.println("Parsing input1");
+		XParser parser = new XParser();
 		long	t0 = System.currentTimeMillis();
 		_xtree1 = parser.parse(input1);
 		long	t1 = System.currentTimeMillis();
+		System.out.println("Parsing input2");
 		parser = new XParser();
 		_xtree2 = parser.parse(input2);
 		long	t2 = System.currentTimeMillis();
@@ -97,12 +99,10 @@ class XDiff
 		if (_xtree1.getHashValue(root1) == _xtree2.getHashValue(root2))
 		{
 			System.out.println("No difference!");
-			System.out.println("Execution time: " + (t2 - t0) +
-					   " ms");
+			System.out.println("Execution time: " + (t2 - t0) + " ms");
 			System.out.println("Parsing " + input1 + ": " +
 					   (t1 - t0) + " ms");
-			System.out.println("Parsing " + input2 + ": " +
-					   (t2 - t1) + " ms");
+			System.out.println("Parsing " + input2 + ": " + (t2 - t1) + " ms");
 		}
 		else
 		{
@@ -154,15 +154,11 @@ class XDiff
 			long	t4 = System.currentTimeMillis();
 
 			System.out.println("Difference detected!");
-			System.out.println("Execution time: " + (t4 - t0) +
-					   " ms");
-			System.out.println("Parsing " + input1 + ": " +
-					   (t1 - t0) + " ms");
-			System.out.println("Parsing " + input2 + ": " +
-					   (t2 - t1) + " ms");
+			System.out.println("Execution time: " + (t4 - t0) + " ms");
+			System.out.println("Parsing " + input1 + ": " + (t1 - t0) + " ms");
+			System.out.println("Parsing " + input2 + ": " + (t2 - t1) + " ms");
 			System.out.println("Diffing: " + (t3 - t2) + " ms");
-			System.out.println("Writing result: " + (t4 - t3) +
-					   " ms");
+			System.out.println("Writing result: " + (t4 - t3) + " ms");
 		}
 	}
 
