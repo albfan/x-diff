@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<Profile>
+ <Customer>
+  <PersonName NameType="Default">
+   <NameTitle>Mr.</NameTitle>
+   <GivenName>George</GivenName>
+   <MiddleName>A.</MiddleName>
+   <SurName>Smith</SurName>
+  </PersonName>
+  <TelephoneInfo PhoneTech="Voice" PhoneUse="Work" >
+   <Telephone> <AreaCityCode>206</AreaCityCode>
+	<PhoneNumber>813-8698</PhoneNumber>
+   </Telephone>
+  </TelephoneInfo>
+  <PaymentForm>
+   ...
+  </PaymentForm>
+  <Address>
+   <StreetNmbr POBox="4321-01">1200 Yakima St</StreetNmbr>
+   <BldgRoom>Suite 800</BldgRoom>
+   <CityName>Seattle</CityName>
+   <StateProv PostalCode="98108">WA</StateProv>
+   <CountryName>USA</CountryName>
+  </Address>
+ </Customer>
+</Profile>

@@ -1,3 +1,4 @@
 *.class
 lib/
 build/
+output.xml
