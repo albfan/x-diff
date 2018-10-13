@@ -16,6 +16,7 @@ Required: Xerces Java v1.4.0+.
 
 On UNIX/LINUX:
 
+    $ getdependencies.sh
     $ make
     $ make package
     $ run.sh
